@@ -54,13 +54,17 @@ app.get('/teams', (req, res) => {
                 const position = $(this).children().first().text()
                 const before = $(this).children('td.cu600.fs10').text()
                 const name = $(this).children('td').children('a').first().text()
+                const country = $(this).children('td').eq(3).children('span').attr('class').split(" ")[1]
                 const url = $(this).children('td').children('a').first().attr('href')
                 const teamClass = $(this).children('td.cu600').last().text()
+
 
                 teams.push({
                     position: position,
                     before: before,
                     name: name,
+                    countryCode: country,
+                    countryFlag: `https://flagcdn.com/24x18/${country}.png`,
                     shortUrl: url.slice(5),
                     url: mainUrl + url,
                     teamClass: teamClass
@@ -85,9 +89,11 @@ app.get('/teams/:team', (req, res) => {
             const html = response.data
             const $ = cheerio.load(html)
             const mt20 = $('.mt20')
+            const main = $('.main')
 
             /* Team Main Info */
-            const name = $('.main').children('h1').text()
+            const name = main.children('h1').text()
+            const country = main.children('span').eq(0).attr('class').split(" ")[1]
             const infolist = $('.infolist')
             const abbreviation = infolist.children('li').eq(1).children('div').eq(1).text()
             const bike = infolist.children('li').eq(2).children('div').eq(1).text()
@@ -162,6 +168,8 @@ app.get('/teams/:team', (req, res) => {
             team.push({
                 "Main info": {
                     name,
+                    countryCode: country,
+                    countryFlag: `https://flagcdn.com/24x18/${country}.png`,
                     abbreviation,
                     bike,
                     shirtImg: `${mainUrl}${shirt}`
@@ -195,6 +203,7 @@ app.get('/riders', (req, res) => {
             tr.each(function () {
                 const position = $(this).children().first().text()
                 const name = $(this).children('td').children('a').text()
+                const country = $(this).children('td').eq(1).children('span').attr('class').split(" ")[1]
                 const url = $(this).children('td').children('a').attr('href')
                 const pointsperraceday = $(this).children('td').eq(2).text()
                 const points = $(this).children('td').eq(3).text()
@@ -203,8 +212,9 @@ app.get('/riders', (req, res) => {
                 riders.push({
                     position,
                     name,
-                    shortUrl: url.slice(6),
-                    url: mainUrl + url,
+                    countryCode: country,
+                    countryFlag: `https://flagcdn.com/24x18/${country}.png`,
+                    ":name for riders/:name endpoint": url.slice(6),
                     "points per raceday": pointsperraceday,
                     points,
                     racedays
@@ -219,6 +229,7 @@ app.get('/riders/:name', (req, res) => {
     const rider = []
     const topResults = []
     const pcsPositions = []
+    const teamsRides = []
     const url = `https://www.procyclingstats.com/rider/${req.params.name}`
 
     axios.get(`${url}`)
@@ -231,6 +242,7 @@ app.get('/riders/:name', (req, res) => {
 
             const name = main.children('h1').text()
             const team = main.children('span.red').text()
+            const country = main.children().first().attr('class').split(" ")[1]
             const riderImgUrl = $('.rdr-img-cont').children('a').children('img').attr('src')
 
             const riderInfo = $('.rdr-info-cont')
@@ -283,6 +295,20 @@ app.get('/riders/:name', (req, res) => {
                 })
             })
 
+            /* Rider Teams*/
+            const rdrTeams = $('.rdr-teams li')
+            rdrTeams.each(function () {
+                const year = $(this).children('.season').text()
+                const team = $(this).children('.name').children('a').text()
+                const teamClass = $(this).children().eq(2).text().trim()
+
+                teamsRides.push({
+                    year,
+                    team,
+                    teamClass
+                })
+            })
+
             /* Rider JSON Response */
             rider.push({
                 "Main info": {
@@ -292,6 +318,8 @@ app.get('/riders/:name', (req, res) => {
                     weight,
                     height,
                     nationality,
+                    countryCode: country,
+                    countryFlag: `https://flagcdn.com/24x18/${country}.png`,
                     "riders photo url": mainUrl + riderImgUrl
                 },
                 "Social": {
@@ -307,7 +335,8 @@ app.get('/riders/:name', (req, res) => {
                     "Classics Ridden": classics
                 },
                 "Top results": topResults,
-                "PCS Ranking position per season": pcsPositions
+                "PCS Ranking position per season": pcsPositions,
+                "Teams": teamsRides
             })
 
             res.json(rider)
