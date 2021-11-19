@@ -1,7 +1,7 @@
 <br>
-<h3 align="center">Cycling API</h3>
+<h3 style="text-align: center;">Cycling API</h3>
 
-  <p align="center">
+  <p style="text-align: center;">
     <samp>A free restful API serving selected data from Pro Cycling Stats</samp>
     <br />
     <br />
@@ -24,8 +24,8 @@
 * [Cheerio.js](https://cheerio.js.org/) - Fast, flexible & lean implementation of core jQuery designed specifically for the server.
 * [Angular](https://angular.io/) - Frontend framework 
 
-* API web is published via [Netlify](https://www.netlify.com/)
-* API is published on [RapidAPI](https://rapidapi.com/)
+* API frontend deployed via [Netlify](https://www.netlify.com/)
+* API published on [RapidAPI](https://rapidapi.com/)
 
 <br/>
 
@@ -46,7 +46,7 @@ If you use the api in your projects then consider showing some support with a cu
 ### Contributing
 
 - For new ENDPOINTS requests please [add comments here](https://github.com/BD4vid777/Cycling_API/issues/1).
-- And for any bug or feature requests, [Submit a issue here](https://github.com/BD4vid777/Cycling_API/issues).
+- And for any bug or issues - [Submit it here](https://github.com/BD4vid777/Cycling_API/issues).
 
 Also please see the [open issues](https://github.com/BD4vid777/Cycling_API/issues/1) for a list of proposed features before submitting one.
 

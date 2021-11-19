@@ -8,24 +8,29 @@ const app = express()
 const teams = []
 const riders = []
 
+const mainUrl = "https://www.procyclingstats.com/"
+
 app.get('/', (req, res) => {
 
     const welcomeMessage = {
-        title: "Cycling API powered by data from Pro Cycling Stats",
-        author: "Dawid Budziński - Code: Archer",
-        endpoints: {
-            welcome: "/",
+        "Title": "Cycling API powered by data from Pro Cycling Stats",
+        "Author": "Dawid Budziński - Code: Archer",
+        "Endpoints": {
+            "Welcome": "/",
             "List of teams": "/teams",
             "Specific team": "/teams/:team => where :team is a shortUrl data from main list of teams",
             "Riders": "/riders => with Points per race day ranking",
             "Specific rider": "/riders/:name => where :name is a shortUrl data from main list of riders"
         },
+        "Data from": mainUrl,
         "GitHub project info": {
-            repo: "https://github.com/BD4vid777/Cycling_API",
+            "Project repository": "https://github.com/BD4vid777/Cycling_API",
             "API Stack": ["express", "axios", "cheerio"],
             "FRONT Stack": ["Angular", "Angular Material"]
         },
-        "Support": "https://buymeacoffee.com/codearcher"
+        "Support": "https://buymeacoffee.com/codearcher",
+        "Issues submit": "https://github.com/BD4vid777/Cycling_API/issues",
+        "Endpoints requests": "https://github.com/BD4vid777/Cycling_API/issues/1"
     }
 
     res.json(welcomeMessage)
@@ -42,8 +47,6 @@ app.get('/teams', (req, res) => {
             const title = main.children('h1').text()
             const subtitle = main.children('span.red').text()
             teams.push(`${title} - ${subtitle}`)
-
-            const mainUrl = "https://www.procyclingstats.com/"
 
             const tr = $('tbody tr');
 
@@ -81,8 +84,7 @@ app.get('/teams/:team', (req, res) => {
         .then(response => {
             const html = response.data
             const $ = cheerio.load(html)
-
-            const mainUrl = "https://www.procyclingstats.com/"
+            const mt20 = $('.mt20')
 
             /* Team Main Info */
             const name = $('.main').children('h1').text()
@@ -111,7 +113,7 @@ app.get('/teams/:team', (req, res) => {
             })
 
             /* Team Staff */
-            const staffData = $('.mt20').children('h3:contains("Staff")').next('table').children('tbody').children('tr')
+            const staffData = mt20.children('h3:contains("Staff")').next('table').children('tbody').children('tr')
             staffData.each(function () {
                 const name = $(this).children('td').eq(0).children('a').text()
                 const position = $(this).children('td').eq(1).text();
@@ -125,10 +127,36 @@ app.get('/teams/:team', (req, res) => {
             })
 
             /* Team Last Victories */
+            const lstVic = mt20.children('h3:contains("Last victories")').next('table').children('tbody').children('tr')
+            lstVic.each(function () {
+                const nr = $(this).children('td').eq(0).text();
+                const raceName = $(this).children('td').eq(1).children('a').text();
+                const raceClass = $(this).children('td').eq(2).text();
+                const rider = $(this).children('td').eq(3).text();
 
+                lastVictories.push({
+                    "Win number": nr,
+                    "Name of race": raceName,
+                    "Class of race": raceClass,
+                    "Winner": rider
+                })
+            })
 
             /* Team Top results */
+            const topRes = $('.mt30').children('h3:contains("Top results")').next('table').children('tbody').children('tr')
+            topRes.each(function () {
+                const result = $(this).children('td').eq(0).text();
+                const raceName = $(this).children('td').eq(1).children('a').text();
+                const raceClass = $(this).children('td').eq(2).text();
+                const rider = $(this).children('td').eq(3).text();
 
+                topResults.push({
+                    result,
+                    "Name of race": raceName,
+                    "Class of race": raceClass,
+                    "Rider": rider
+                })
+            })
 
             /* Team JSON Response */
             team.push({
@@ -161,8 +189,6 @@ app.get('/riders', (req, res) => {
         .then(response => {
             const html = response.data
             const $ = cheerio.load(html)
-
-            const mainUrl = "https://www.procyclingstats.com/"
 
             const tr = $('tbody tr');
 
@@ -199,8 +225,6 @@ app.get('/riders/:name', (req, res) => {
         .then(response => {
             const html = response.data
             const $ = cheerio.load(html)
-
-            const mainUrl = "https://www.procyclingstats.com/"
 
             /* Rider Main Info */
             const main = $('.main')
