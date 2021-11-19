@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API with data form Pro Cycling Stats",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "server": "npx nodemon index.js"
   },
