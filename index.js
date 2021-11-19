@@ -21,12 +21,11 @@ app.get('/', (req, res) => {
             "Specific rider": "/riders/:name => where :name is a shortUrl data from main list of riders"
         },
         "GitHub project info": {
-            repo: "",
-            dependenciesUsed: ["express", "axios", "cheerio"],
-        }
-
-
-
+            repo: "https://github.com/BD4vid777/Cycling_API",
+            "API Stack": ["express", "axios", "cheerio"],
+            "FRONT Stack": ["Angular", "Angular Material"]
+        },
+        "Support": "https://buymeacoffee.com/codearcher"
     }
 
     res.json(welcomeMessage)
