@@ -1,7 +1,7 @@
 <br>
-<h3 style="text-align: center;">Cycling API</h3>
+<h3 align=center>Cycling API</h3>
 
-  <p style="text-align: center;">
+  <p align=center>
     <samp>A free restful API serving selected data from Pro Cycling Stats</samp>
     <br />
     <br />
