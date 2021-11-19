@@ -4,6 +4,7 @@
   <p align="center">
     <samp>A free restful API serving selected data from Pro Cycling Stats</samp>
     <br />
+    <br />
     <a href="#"><strong>Explore the api »</strong></a> <br>
     <a href="#" style="pointer-events: none"><strong>Check API usage (Coming soon)»</strong></a>
     <br />
