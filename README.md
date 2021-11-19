@@ -17,6 +17,12 @@
 
 <br/>
 
+![GitHub top language](https://img.shields.io/github/languages/top/BD4vid777/Cycling_API)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BD4vid777/Cycling_API)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/BD4vid777/Cycling_API)
+![Website](https://img.shields.io/website?label=Published%20at&up_message=RapidAPI&url=https%3A%2F%2FrapidAPI.com)
+
+
 ### Techstack
 
 * [Express.js](http://expressjs.com/) - Minimalist web framework for node.
