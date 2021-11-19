@@ -77,7 +77,7 @@ app.get('/teams', (req, res) => {
 app.get('/teams/:team', (req, res) => {
 
     const team = []
-    const riders = []
+    const teamRiders = []
     const staff = []
     const lastVictories = []
     const topResults = []
@@ -112,7 +112,7 @@ app.get('/teams/:team', (req, res) => {
                 const rider = $(this).text()
                 const riderPhoto = $(this).children('a').css('background').split(" ")[0].substring(4).replace(")","")
 
-                riders.push({
+                teamRiders.push({
                     rider,
                     photo: `${mainUrl}${riderPhoto}`
                 })
@@ -180,7 +180,7 @@ app.get('/teams/:team', (req, res) => {
                     facebook,
                     instagram
                 },
-                riders,
+                teamRiders,
                 staff,
                 lastVictories,
                 topResults
