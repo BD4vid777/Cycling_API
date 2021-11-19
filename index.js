@@ -343,4 +343,16 @@ app.get('/riders/:name', (req, res) => {
         }).catch(err => console.error(err))
 })
 
+app.get("/shieldsIO_Badge", (req, res) => {
+
+    const badgeIO = {
+        "schemaVersion": 1,
+        "label": "Test ENDPOINT",
+        "message": "Passed - API working",
+        "color": "success"
+    }
+
+    res.json(badgeIO)
+})
+
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`))
