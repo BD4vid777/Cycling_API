@@ -5,9 +5,6 @@ import cheerio from 'cheerio'
 
 const app = express()
 
-const teams = []
-const riders = []
-
 const mainUrl = "https://www.procyclingstats.com/"
 
 app.get('/', (req, res) => {
@@ -37,6 +34,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/teams', (req, res) => {
+    const teams = []
     axios.get('https://www.procyclingstats.com/rankings/me/teams')
         .then(response => {
 
@@ -193,6 +191,8 @@ app.get('/teams/:team', (req, res) => {
 })
 
 app.get('/riders', (req, res) => {
+    const riders = []
+    
     axios.get("https://www.procyclingstats.com/statistics/riders/points-per-raceday")
         .then(response => {
             const html = response.data
