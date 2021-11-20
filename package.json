@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "server": "npx nodemon index.js"
+    "start": "nodemon index.js"
   },
   "keywords": [
     "Cycling",
@@ -13,7 +13,7 @@
   ],
   "author": "Dawid Budziński - Code: Archer",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.1",
