@@ -23,6 +23,66 @@
 ![Website](https://img.shields.io/website?label=Published%20at&up_message=RapidAPI&url=https%3A%2F%2Frapidapi.com%2FBD4vid777%2Fapi%2Fpro-cycling-stats%2F)
 ![Custom badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fpro-cycling-stats-api.herokuapp.com%2FshieldsIO_Badge)
 
+### Usage - endpoints
+
+**GET All Teams - JS**
+
+```javascript
+var axios = require("axios").default;
+
+var options = {
+  method: 'GET',
+  url: 'https://pro-cycling-stats.p.rapidapi.com/teams',
+  headers: {
+    'x-rapidapi-host': 'pro-cycling-stats.p.rapidapi.com',
+    'x-rapidapi-key': 'ff2d4f0c13msh355a37b334e3357p1b3479jsnc0bc78225888'
+  }
+};
+
+axios.request(options).then(function (response) {
+	console.log(response.data);
+}).catch(function (error) {
+	console.error(error);
+});
+
+```
+
+Via browser - https://pro-cycling-stats-api.herokuapp.com/teams
+
+```json
+[
+    {
+        "position": "1",
+        "before": "1",
+        "name": "Deceuninck - Quick Step",
+        "countryCode": "be",
+        "countryFlag": "https://flagcdn.com/24x18/be.png",
+        "shortUrl": "deceuninck-quick-step-2021",
+        "url": "https://www.procyclingstats.com/team/deceuninck-quick-step-2021",
+        "teamClass": "WT"
+    },
+    {
+        "position": "2",
+        "before": "4",
+        "name": "INEOS Grenadiers",
+        "countryCode": "gb",
+        "countryFlag": "https://flagcdn.com/24x18/gb.png",
+        "shortUrl": "ineos-grenadiers-2021",
+        "url": "https://www.procyclingstats.com/team/ineos-grenadiers-2021",
+        "teamClass": "WT"
+    },
+    {
+        "position": "3",
+        "before": "2",
+        "name": "Team Jumbo-Visma",
+        "countryCode": "nl",
+        "countryFlag": "https://flagcdn.com/24x18/nl.png",
+        "shortUrl": "team-jumbo-visma-2021",
+        "url": "https://www.procyclingstats.com/team/team-jumbo-visma-2021",
+        "teamClass": "WT"
+    } (...)
+]
+```
 
 ### Techstack
 
