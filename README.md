@@ -5,7 +5,7 @@
     <samp>A free restful API serving selected data from Pro Cycling Stats</samp>
     <br />
     <br />
-    <a href="#"><strong>Explore the api »</strong></a> <br>
+    <a href="https://rapidapi.com/BD4vid777/api/pro-cycling-stats/"><strong>Explore the api »</strong></a> <br>
     <a href="#" style="pointer-events: none"><strong>Check API usage (Coming soon)»</strong></a>
     <br />
     <br />
@@ -20,7 +20,8 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/BD4vid777/Cycling_API)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BD4vid777/Cycling_API)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/BD4vid777/Cycling_API)
-![Website](https://img.shields.io/website?label=Published%20at&up_message=RapidAPI&url=https%3A%2F%2FrapidAPI.com)
+![Website](https://img.shields.io/website?label=Published%20at&up_message=RapidAPI&url=https%3A%2F%2Frapidapi.com%2FBD4vid777%2Fapi%2Fpro-cycling-stats%2F)
+![Custom badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fpro-cycling-stats-api.herokuapp.com%2FshieldsIO_Badge)
 
 
 ### Techstack
@@ -31,7 +32,7 @@
 * [Angular](https://angular.io/) - Frontend framework 
 
 * API frontend deployed via [Netlify](https://www.netlify.com/)
-* API server deployed via [Heroku]()
+* API server deployed via [Heroku](https://pro-cycling-stats-api.herokuapp.com/)
 * API published on [RapidAPI](https://rapidapi.com/)
 
 <br/>
