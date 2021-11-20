@@ -1,8 +1,8 @@
+const PORT = process.env.PORT || 8000;
 import express from "express";
 import axios from 'axios';
 import cheerio from 'cheerio'
 
-const PORT = 8000;
 const app = express()
 
 const teams = []

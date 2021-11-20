@@ -31,6 +31,7 @@
 * [Angular](https://angular.io/) - Frontend framework 
 
 * API frontend deployed via [Netlify](https://www.netlify.com/)
+* API server deployed via [Heroku]()
 * API published on [RapidAPI](https://rapidapi.com/)
 
 <br/>
