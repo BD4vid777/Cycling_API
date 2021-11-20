@@ -25,7 +25,7 @@
 
 ### Usage - endpoints
 
-**GET All Teams - JS**
+**GET All Teams - JS with RAPID API SIGN UP**
 
 ```javascript
 var axios = require("axios").default;
@@ -35,7 +35,7 @@ var options = {
   url: 'https://pro-cycling-stats.p.rapidapi.com/teams',
   headers: {
     'x-rapidapi-host': 'pro-cycling-stats.p.rapidapi.com',
-    'x-rapidapi-key': 'ff2d4f0c13msh355a37b334e3357p1b3479jsnc0bc78225888'
+    'x-rapidapi-key': 'SIGN-UP-IN-RAPIDAPI.COM-FOR-KEY'
   }
 };
 
