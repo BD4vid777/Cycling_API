@@ -249,8 +249,15 @@ app.get('/riders/:name', (req, res) => {
             const splitInfo = riderInfo.text().split(" ")
 
             const dateOfBirth = `${splitInfo[3]} ${splitInfo[4]} ${splitInfo[5]} ${splitInfo[6].slice(0,4)}`
-            const weight = `${splitInfo[8]} kg`
-            const height = `${splitInfo[12]} m`
+            let weight = ''
+            let height = ''
+            if (riderInfo.children('a').first().text().split(" ").length !== 2) {
+                weight = `${splitInfo[8]} kg`
+                height = `${splitInfo[12]} m`
+            } else {
+                weight = `${splitInfo[9]} kg`
+                height = `${splitInfo[13]} m`
+            }
             const nationality = riderInfo.children('a').first().text()
 
             /* Rider Social Sites */
